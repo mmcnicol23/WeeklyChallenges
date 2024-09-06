@@ -68,7 +68,7 @@ namespace ChallengesWithTestsMark8.Tests
             ChallengesSet01 challenger = new ChallengesSet01();
 
             // Act
-            int actual = challenger.Add(addend1, addend2);
+            int actual = ChallengesSet01.Add(addend1, addend2);
 
             // Assert
             Assert.Equal(expectedSum, actual);
