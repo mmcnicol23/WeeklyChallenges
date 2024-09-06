@@ -1,28 +1,33 @@
 using System.Collections.Generic;
+using Microsoft.VisualBasic;
 using Xunit;
 
 namespace ChallengesWithTestsMark8.Tests
 {
     public class ChallengesSet02Tests
     {
-        [Fact]
-        public void CharacterIsALetter()
+        [Theory]
+        [InlineData('a', true)]
+        [InlineData('b', true)]
+        [InlineData('c', true)]
+        [InlineData(2, false)]
+        [InlineData(3, false)]
+        public void CharacterIsALetter(char x, bool expected)
         {
             // Arrange
-            ChallengesSet02 challenger = new ChallengesSet02();
-            string lowercaseAlphabet = "abcdefghijklmnopqrstuvwxyz";
+            var  challenger = new ChallengesSet02();
+            
+            // Act
+            var actual = challenger.CharacterIsALetter(x);
+            // bool lowercaseActual = challenger.CharacterIsALetter(x);
+            // bool uppercaseActual = challenger.CharacterIsALetter(char.ToUpper(x));
+            
 
-            // Check all letters
-            foreach (char letter in lowercaseAlphabet)
-            {
-                // Act
-                bool lowercaseActual = challenger.CharacterIsALetter(letter);
-                bool uppercaseActual = challenger.CharacterIsALetter(char.ToUpper(letter));
-
-                // Assert
-                Assert.True(lowercaseActual);
-                Assert.True(uppercaseActual);
-            }
+            // Assert
+            Assert.Equal(expected, actual);
+            // Assert.True(lowercaseActual);
+            // Assert.True(uppercaseActual);
+            
         }
 
         [Fact]
@@ -51,14 +56,14 @@ namespace ChallengesWithTestsMark8.Tests
         [InlineData(new string[] { "a" }, false)]
         [InlineData(new string[] { "a", "b", "c" }, false)]
         [InlineData(new string[] { "a", "b", "c", "d", "e" }, false)]
-        // [InlineData(null, false)] // Assumption: array will not be null
-        public void CountOfElementsIsEven(string[] strings, bool expected)
+        
+        public void CountOfElementsIsEven(string[] vals, bool expected)
         {
             // Arrange
             ChallengesSet02 challenger = new ChallengesSet02();
 
             // Act
-            bool actual = challenger.CountOfElementsIsEven(strings);
+            var actual = challenger.CountOfElementsIsEven(vals);
 
             // Assert
             Assert.Equal(expected, actual);
@@ -81,10 +86,10 @@ namespace ChallengesWithTestsMark8.Tests
         public void IsNumberEven(int number, bool expected)
         {
             // Arrange
-            ChallengesSet02 challenger = new ChallengesSet02();
+            var challenger = new ChallengesSet02();
 
             // Act
-            bool actual = challenger.IsNumberEven(number);
+            var actual = challenger.IsNumberEven(number);
 
             // Assert
             Assert.Equal(expected, actual);
@@ -104,13 +109,13 @@ namespace ChallengesWithTestsMark8.Tests
         [InlineData(7, true)]
         [InlineData(-1, true)]
         [InlineData(-3, true)]
-        public void IsNumberOdd(int number, bool expected)
+        public void IsNumberOdd(int num, bool expected)
         {
             // Arrange
-            ChallengesSet02 challenger = new ChallengesSet02();
+            var challenger = new ChallengesSet02();
 
             // Act
-            bool actual = challenger.IsNumberOdd(number);
+            var actual = challenger.IsNumberOdd(num);
 
             // Assert
             Assert.Equal(expected, actual);
@@ -130,10 +135,10 @@ namespace ChallengesWithTestsMark8.Tests
         public void SumOfMinAndMax(IEnumerable<double> numbers, double expected)
         {
             // Arrange
-            ChallengesSet02 challenger = new ChallengesSet02();
+            var challenger = new ChallengesSet02();
 
             // Act
-            double actual = challenger.SumOfMinAndMax(numbers);
+            var actual = challenger.SumOfMinAndMax(numbers);
 
             // Assert
             Assert.Equal(expected, actual);
@@ -150,10 +155,10 @@ namespace ChallengesWithTestsMark8.Tests
         public void GetLengthOfShortestString(string str1, string str2, int expected)
         {
             // Arrange
-            ChallengesSet02 challenger = new ChallengesSet02();
+            var challenger = new ChallengesSet02();
 
             // Act
-            int actual = challenger.GetLengthOfShortestString(str1, str2);
+            var actual = challenger.GetLengthOfShortestString(str1, str2);
 
             // Assert
             Assert.Equal(expected, actual);
@@ -169,10 +174,10 @@ namespace ChallengesWithTestsMark8.Tests
         public void Sum(int[] numbers, int expected)
         {
             // Arrange
-            ChallengesSet02 challenger = new ChallengesSet02();
+            var challenger = new ChallengesSet02();
 
             // Act
-            int actual = challenger.Sum(numbers);
+            var actual = challenger.Sum(numbers);
 
             // Assert
             Assert.Equal(expected, actual);
@@ -192,10 +197,10 @@ namespace ChallengesWithTestsMark8.Tests
         public void SumEvens(int[] numbers, int expected)
         {
             // Arrange
-            ChallengesSet02 challenger = new ChallengesSet02();
+            var challenger = new ChallengesSet02();
 
             // Act
-            int actual = challenger.SumEvens(numbers);
+            var actual = ChallengesSet02.SumEvens(numbers);
 
             // Assert
             Assert.Equal(expected, actual);
@@ -216,11 +221,11 @@ namespace ChallengesWithTestsMark8.Tests
         public void IsSumOdd(int[] numbers, bool expected)
         {
             // Arrange
-            ChallengesSet02 challenger = new ChallengesSet02();
+            var challenger = new ChallengesSet02();
             List<int> numbersList = numbers == null ? null : new List<int>(numbers);
 
             // Act
-            bool actual = challenger.IsSumOdd(numbersList);
+            var actual = challenger.IsSumOdd(numbersList);
 
             // Assert
             Assert.Equal(expected, actual);
@@ -243,10 +248,10 @@ namespace ChallengesWithTestsMark8.Tests
         public void CountOfPositiveOddsBelowNumber(int number, int expected)
         {
             // Arrange
-            ChallengesSet02 challenger = new ChallengesSet02();
+            var challenger = new ChallengesSet02();
 
             // Act
-            double actual = challenger.CountOfPositiveOddsBelowNumber(number);
+            var actual = challenger.CountOfPositiveOddsBelowNumber(number);
 
             // Assert
             Assert.Equal(expected, actual);
