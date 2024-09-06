@@ -65,7 +65,7 @@ namespace ChallengesWithTestsMark8
             }
             
             return 0;
-
+            //didn't use:
             // if (numbers == null || numbers.Count() == 0)
             // {
             //     return 0;
